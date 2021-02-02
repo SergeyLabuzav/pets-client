@@ -9,3 +9,88 @@ body {
 h1, h2, label, strong {
     color: #545871;
 }
+
+@media screen and (max-width: 767px) {
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+.custom-button {
+    appearance: none;
+    -webkit-appearance: none;
+    background:  0 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 700;
+    line-height: 1.28571429;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 19px 40px;
+    display: block;
+    width: 100%;
+    transition: box-shadow 420ms cubic-bezier(.165, .84, .44, 1), color 420ms cubic-bezier(.165, .84, .44, 1), background 420ms cubic-bezier(.165, .84, .44, 1);
+
+}
+
+.custom-button.primary__button {
+    background-color: #545871;
+    color: #fff;
+    fill: #fff;
+}
+
+.primary__button:focus {
+    background-color: #403D4B;
+    color: #fff;
+    fill: #fff;
+    outline: 0;
+}
+
+.custom-button.primary__button:hover {
+    background-color: #403D4B;
+    color: #fff;
+    fill: #fff;
+    border-color: #4a154b;
+}
+
+@media screen and (min-width: 25rem) {
+    .custom-button {
+        font-size: calc(.875rem + (0 * (100vw - 400px) / 624));
+    }
+}
+
+@media screen and (min-width: 64rem) {
+    .custom-button {
+        font-size: .875rem;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .custom-button {
+        padding: 19px 0 20px
+    }
+}
+
+
+.custom__input {
+    background-color: #fff;
+    color: #454545;
+    text-decoration: none;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: normal;
+    font-size: 1rem;
+    border: 1px solid #696969;
+    border-radius: 4px;
+    box-shadow: none;
+    padding: 1.15rem 1rem;
+    display: inline-block;
+    width: 100%;
+}
+
+.custom__input:focus {
+    border: 1px solid #403D4B;
+}

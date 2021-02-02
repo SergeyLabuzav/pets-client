@@ -1,13 +1,13 @@
-import React, { useEffect, useRef, useState } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
-import { useAuth } from "../contexts/AuthContext"
-import { Link, useHistory } from "react-router-dom"
+import React, { useRef, useState } from "react";
+import { Alert, Button, Card, Form } from "react-bootstrap";
+import { useAuth } from "../contexts/AuthContext";
+import { Link, useHistory } from "react-router-dom";
 
 export default function UpdateProfile() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
-  const { currentUser, updatePassword, updateEmail } = useAuth()
+  const {currentUser, updatePassword, updateEmail} = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
@@ -46,22 +46,22 @@ export default function UpdateProfile() {
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Update Profile</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
+          { error && <Alert variant="danger">{ error }</Alert> }
+          <Form onSubmit={ handleSubmit }>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
-                ref={emailRef}
+                ref={ emailRef }
                 required
-                defaultValue={currentUser.email}
+                defaultValue={ currentUser.email }
               />
             </Form.Group>
             <Form.Group id="password">
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
-                ref={passwordRef}
+                ref={ passwordRef }
                 placeholder="Leave blank to keep the same"
               />
             </Form.Group>
@@ -69,11 +69,11 @@ export default function UpdateProfile() {
               <Form.Label>Password Confirmation</Form.Label>
               <Form.Control
                 type="password"
-                ref={passwordConfirmRef}
+                ref={ passwordConfirmRef }
                 placeholder="Leave blank to keep the same"
               />
             </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
+            <Button disabled={ loading } className="w-100" type="submit">
               Update
             </Button>
           </Form>

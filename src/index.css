@@ -6,13 +6,20 @@ body {
     background-color: #F0F1F8;
 }
 
-h1, h2, label, strong {
+h1, h2, label, strong, p {
     color: #545871;
 }
 
 @media screen and (max-width: 767px) {
     h1 {
         font-size: 2rem;
+    }
+}
+
+
+@media screen and (max-width: 367px) {
+    h1 {
+        font-size: 1.5rem;
     }
 }
 
@@ -30,16 +37,41 @@ h1, h2, label, strong {
     text-transform: uppercase;
     text-decoration: none;
     padding: 19px 40px;
+    margin: 8px;
     display: block;
-    width: 100%;
+    /*width: 100%;*/
     transition: box-shadow 420ms cubic-bezier(.165, .84, .44, 1), color 420ms cubic-bezier(.165, .84, .44, 1), background 420ms cubic-bezier(.165, .84, .44, 1);
 
+}
+
+.custom-button-pill {
+    text-transform: none;
+    box-shadow: 0 2px 10px rgba(196, 186, 196, .3);
+    border-radius: 52px;
+    border: none;
+    padding: 12px 24px;
+    margin: 13px 1rem 13px 0;
+    background-color: #545871;
+    color: #fff;
+    fill: #fff;
+}
+
+.custom-button-pill:hover {
+    border: none;
 }
 
 .custom-button.primary__button {
     background-color: #545871;
     color: #fff;
     fill: #fff;
+    flex: 1;
+}
+
+.custom-button.submit__button {
+    background-color: #F1CFCD;
+    color: #9497A7;
+    fill: #fff;
+    flex: 1;
 }
 
 .primary__button:focus {
@@ -47,6 +79,10 @@ h1, h2, label, strong {
     color: #fff;
     fill: #fff;
     outline: 0;
+}
+
+.primary__button:disabled {
+    background-color: lightgray;
 }
 
 .custom-button.primary__button:hover {
@@ -65,15 +101,23 @@ h1, h2, label, strong {
 @media screen and (min-width: 64rem) {
     .custom-button {
         font-size: .875rem;
+        display: inline-block;
+        white-space: nowrap;
+        flex-basis: auto;
+        width: auto;
     }
 }
 
 @media screen and (max-width: 767px) {
     .custom-button {
-        padding: 19px 0 20px
+        padding: 19px 0 20px;
+        width: 45%;
+        display: inline-block;
+        white-space: nowrap;
+        flex-basis: auto;
+        /*width: 100%;*/
     }
 }
-
 
 .custom__input {
     background-color: #fff;
@@ -93,4 +137,116 @@ h1, h2, label, strong {
 
 .custom__input:focus {
     border: 1px solid #403D4B;
+}
+
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mt-50 {
+    margin-top: 50px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+
+.custom__radioButton__group {
+    display: flex;
+    flex-direction: row;
+}
+
+.custom__radioButton {
+    display: flex;
+    float: left;
+    flex: 1;
+}
+
+.custom__radioButton__group input[type=radio] {
+    display: none;
+}
+
+.custom__radioButton__group label {
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px 15px;
+    line-height: 34px;
+    border: 1px solid #999;
+    border-right: none;
+    user-select: none;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.custom__radioButton__group .custom__radioButton:first-child label {
+    border-radius: 6px 0 0 6px;
+}
+
+.custom__radioButton__group .custom__radioButton:last-child label {
+    border-radius: 0 6px 6px 0;
+    border-right: 1px solid #999;
+}
+
+.custom__radioButton__group input[type=radio] + label > div > p {
+    margin-bottom: 0;
+}
+
+.custom__radioButton__group input[type=radio]:checked + label {
+    background: #545871;
+}
+
+.custom__radioButton__group input[type=radio]:checked + label > div > p {
+    color: white;
+}
+
+.custom__radioButton__group label:hover {
+    color: #666;
+}
+
+.custom__radioButton__group input[type=radio]:disabled + label {
+    background: #efefef;
+    color: #666;
+}
+
+.custom__radioButton__input__img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.custom__radioButton__input__img > img {
+    object-fit: contain;
+    height: 40px;
+    padding-top: 8px;
+    padding-left: 24px;
+    padding-right: 24px;
+    color: white;
+    fill: white;
+}
+
+@media screen and (max-width: 767px) {
+    .custom__radioButton__group label {
+        padding: 10px 14px;
+    }
+
+    .custom__radioButton__input__img > img {
+        height: 32px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .custom__radioButton__group label {
+        padding: 10px 20px;
+    }
+
+    .custom__radioButton__input__img > img {
+        height: 24px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
 }

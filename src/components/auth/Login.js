@@ -1,14 +1,14 @@
 import React, { useRef, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContext";
-import { Link, useHistory } from "react-router-dom";
 import "./Login.css";
 import paw from "../../assets/paw.svg";
 
 export default function Login() {
   const emailRef = useRef()
   const passwordRef = useRef()
-  const {login, loginWithGoogle} = useAuth()
+  const { login, loginWithGoogle } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()

@@ -7,7 +7,7 @@ import paw from "../../assets/paw.svg";
 
 export default function ForgotPassword() {
   const emailRef = useRef()
-  const {resetPassword} = useAuth()
+  const { resetPassword } = useAuth()
   const [error, setError] = useState("")
   const [message, setMessage] = useState("")
   const [loading, setLoading] = useState(false)

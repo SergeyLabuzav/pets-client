@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContext";
-import { Link, useHistory } from "react-router-dom";
 import "./Signup.css";
 import paw from "../../assets/paw.svg";
 
@@ -9,7 +9,7 @@ export default function Signup() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
-  const {signup} = useAuth()
+  const { signup } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()

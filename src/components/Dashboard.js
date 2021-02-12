@@ -1,41 +1,47 @@
-import React, { useState } from "react";
-import { Card, Button, Alert } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
-import { Link, useHistory } from "react-router-dom";
+import { profilesCollection } from "../firebase";
+import AddPet from "./content/AddPet";
+import firebase from "firebase";
 
 export default function Dashboard() {
-  const [error, setError] = useState("")
-  const { currentUser, logout } = useAuth()
-  const history = useHistory()
+  const [pets, setPets] = useState([]);
+  const { currentUser } = useAuth()
+  const [loading, setLoading] = useState(false);
 
-  async function handleLogout() {
-    setError("")
+  useEffect(() => {
+      setLoading(true);
+      profilesCollection
+        .doc(currentUser.uid)
+        .collection("pets")
+        .onSnapshot(snapshot => {
+          setPets(snapshot.docs.map(doc => doc.data()));
+          setLoading(false);
+        })
 
-    try {
-      await logout()
-      history.push("/login")
-    } catch {
-      setError("Failed to log out")
-    }
+    }, []
+  )
+
+  function createNewPet(newPet) {
+    const { name, breed, petType, petGender } = newPet;
+    profilesCollection.doc(currentUser.uid).collection("pets").add({
+      name: name,
+      breed: breed,
+      type: petType,
+      gender: petGender,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    })
   }
 
   return (
     <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">Profile</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <strong>Email:</strong> {currentUser.email}
-          <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
-            Update Profile
-          </Link>
-        </Card.Body>
-      </Card>
-      <div className="w-100 text-center mt-2">
-        <Button variant="link" onClick={handleLogout}>
-          Log Out
-        </Button>
-      </div>
+      {
+        !loading && pets.length === 0 ? (
+          <AddPet callback={ createNewPet }/>
+        ) : (
+          <h1>Pets component</h1>
+        )
+      }
     </>
   )
 }

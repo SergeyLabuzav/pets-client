@@ -13,6 +13,7 @@ const app = firebase.initializeApp({
 });
 
 export const auth = app.auth();
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
 const database = app.firestore();
 export const profilesCollection = database.collection('profiles');
 export default app;
